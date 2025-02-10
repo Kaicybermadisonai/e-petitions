@@ -78,6 +78,9 @@ GEM
       rack
     aws-eventstream (1.4.0)
     aws-partitions (1.1156.0)
+    aws-sdk-bedrockruntime (1.59.0)
+      aws-sdk-core (~> 3, >= 3.231.0)
+      aws-sigv4 (~> 1.5)
     aws-sdk-cloudwatchlogs (1.126.0)
       aws-sdk-core (~> 3, >= 3.231.0)
       aws-sigv4 (~> 1.5)
@@ -322,6 +325,8 @@ GEM
     omniauth-saml (2.2.4)
       omniauth (~> 2.1)
       ruby-saml (~> 1.18)
+    openai (0.23.2)
+      connection_pool
     orm_adapter (0.5.0)
     pg (1.6.2-aarch64-linux)
     pg (1.6.2-arm64-darwin)
@@ -494,6 +499,7 @@ PLATFORMS
 
 DEPENDENCIES
   appsignal
+  aws-sdk-bedrockruntime
   aws-sdk-cloudwatchlogs
   aws-sdk-codedeploy
   aws-sdk-s3
@@ -527,6 +533,7 @@ DEPENDENCIES
   omniauth
   omniauth-rails_csrf_protection
   omniauth-saml
+  openai
   pg
   propshaft
   pry
