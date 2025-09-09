@@ -8,26 +8,25 @@
     <%= preload_link_tag 'application.js', nopush: true %>
     <%= stylesheet_link_tag 'application' %>
 
-    <meta name="viewport" content="width = device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= render 'application/os' %>
     <%= render 'application/social_meta' %>
     <% if noindex_page? %>
       <meta name="robots" content="noindex">
     <% end %>
-    <meta name="theme-color" content="#080">
+    <meta name="theme-color" content="#373151">
   </head>
   <body>
-    <% if show_cookie_message? %>
-      <div id="global-cookie-message">
-        <p>We use cookies to make this service simpler. <a href="/cookies">Find out more about cookies</a></p>
-      </div>
-    <% end %>
-
     <%= render 'application/header' %>
+    <%= render 'application/menu' %>
 
-    <main id="content">
-      <%= render 'application/messages' %>
-      <%= yield %>
+    <main id="main-content">
+      <%= yield :hero_banner %>
+
+      <div class="container">
+        <%= render 'application/messages' %>
+        <%= yield %>
+      </div>
     </main>
 
     <%= render 'application/footer' %>

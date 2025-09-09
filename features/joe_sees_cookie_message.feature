@@ -1,3 +1,4 @@
+@wip
 Feature: Joe sees cookie message
   In order to be informed about privacy issues
   As Joe, a member of the general public

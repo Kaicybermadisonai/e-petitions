@@ -11,7 +11,7 @@ Rails.application.configure do
     policy.connect_src :self,
       "https://www.google-analytics.com"
 
-    policy.img_src :self,
+    policy.img_src :self, :data,
       "https://www.google-analytics.com"
 
     policy.script_src :self, :unsafe_inline,

@@ -12,7 +12,7 @@ RSpec.describe "Content Security Policy header", type: :request do
   end
 
   it "sets img-src to 'self' and https://www.google-analytics.com" do
-    expect(subject).to match(/img-src 'self' https:\/\/www\.google-analytics\.com;/)
+    expect(subject).to match(/img-src 'self' data: https:\/\/www\.google-analytics\.com;/)
   end
 
   it "sets script-src to 'self', 'unsafe-inline', https://www.googletagmanager.com and https://www.google-analytics.com" do

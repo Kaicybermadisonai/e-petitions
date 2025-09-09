@@ -53,11 +53,24 @@
       <%= error_messages_for_field @site, :disable_trending_petitions %>
       <div class="multiple-choice">
         <%= form.radio_button :disable_trending_petitions, true %>
-        <%= form.label :disable_trending_petitions, "Yes", for: "site_disable_constituency_api_true" %>
+        <%= form.label :disable_trending_petitions, "Yes", for: "site_disable_trending_petitions_true" %>
       </div>
       <div class="multiple-choice">
         <%= form.radio_button :disable_trending_petitions, false %>
-        <%= form.label :disable_trending_petitions, "No", for: "site_disable_constituency_api_false" %>
+        <%= form.label :disable_trending_petitions, "No", for: "site_disable_trending_petitions_false" %>
+      </div>
+    <% end %>
+
+    <%= form_row for: [form.object, :disable_popular_petitions], class: "inline" do %>
+      <%= form.label :disable_popular_petitions, "Disable popular petitions on the home page?", class: "form-label" %>
+      <%= error_messages_for_field @site, :disable_popular_petitions %>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_popular_petitions, true %>
+        <%= form.label :disable_popular_petitions, "Yes", for: "site_disable_popular_petitions_true" %>
+      </div>
+      <div class="multiple-choice">
+        <%= form.radio_button :disable_popular_petitions, false %>
+        <%= form.label :disable_popular_petitions, "No", for: "site_disable_popular_petitions_false" %>
       </div>
     <% end %>
 

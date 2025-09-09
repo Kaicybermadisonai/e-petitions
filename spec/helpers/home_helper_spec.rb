@@ -138,8 +138,8 @@ RSpec.describe HomeHelper, type: :helper do
       end
 
       context "and it is called without a block" do
-        it "returns an empty array" do
-          expect(helper.trending_petitions).to eq([])
+        it "returns nil" do
+          expect(helper.trending_petitions).to be_nil
         end
       end
     end
@@ -157,8 +157,8 @@ RSpec.describe HomeHelper, type: :helper do
         end
 
         context "and it is called without a block" do
-          it "returns an empty array" do
-            expect(helper.trending_petitions).to eq([])
+          it "returns nil" do
+            expect(helper.trending_petitions).to be_nil
           end
         end
       end

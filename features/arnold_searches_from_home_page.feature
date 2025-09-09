@@ -9,7 +9,7 @@ Background:
     And an open petition exists with action: "Uncle Bulgaria", additional_details: "The Wombles are here", closed_at: "1 minute from now", signature_count: 23
     And an open petition exists with action: "Common People", background: "The Wombles belong to us all", closed_at: "11 days from now", signature_count: 19
     And an open petition exists with action: "Overthrow the Wombles", closed_at: "3 months from now", signature_count: 17
-    And a closed petition exists with action: "The Wombles will rock Glasto", closed_at: "1 minute ago"
+    And a closed petition exists with action: "The Wombles will rock Glasto", closed_at: "1 minute ago", signature_count: 9
     And a rejected petition exists with action: "Eavis vs the Wombles"
     And a hidden petition exists with action: "The Wombles are profane"
     And an open petition exists with action: "Wombles", closed_at: "10 days from now", signature_count: 13
@@ -18,7 +18,7 @@ Background:
       | Rivers are great         | closed   | 835             | 2012-01-01 | 2013-01-01 | 2012-01-01 |
       | More rivers please       | closed   | 243             | 2011-04-01 | 2012-04-01 | 2011-04-01 |
       | Cry me a river           | closed   | 639             | 2014-10-01 | 2015-03-31 | 2014-10-01 |
-      | Also Rivers              | rejected |                 |            |            | 2011-01-01 |
+      | Also Rivers              | rejected | 6               |            |            | 2011-01-01 |
       | River Island             | hidden   |                 |            |            | 2011-01-01 |
 
 Scenario: Arnold searches for petitions when parliament is opened
@@ -26,15 +26,16 @@ Scenario: Arnold searches for petitions when parliament is opened
   When I search all petitions for "Wombles"
   Then I should be on the all petitions page
   And I should have the following query string:
-    | state | open    |
     | q     | Wombles |
   And I should see my search term "Wombles" filled in the search field
-  And I should see "4 results"
+  And I should see "6 results"
   And I should see the following search results:
-    | Uncle Bulgaria        | 23 signatures |
-    | Common People         | 19 signatures |
-    | Overthrow the Wombles | 17 signatures |
-    | Wombles               | 13 signatures |
+    | Uncle Bulgaria               | 23 signatures |
+    | Common People                | 19 signatures |
+    | Overthrow the Wombles        | 17 signatures |
+    | Wombles                      | 13 signatures |
+    | The Wombles will rock Glasto | 9 signatures  |
+    | Eavis vs the Wombles         |               |
 
 Scenario: Arnold searches for petitions when parliament is dissolving
   Given Parliament is dissolving
@@ -42,15 +43,16 @@ Scenario: Arnold searches for petitions when parliament is dissolving
   And I search all petitions for "Wombles"
   Then I should be on the all petitions page
   And I should have the following query string:
-    | state | open    |
     | q     | Wombles |
   And I should see my search term "Wombles" filled in the search field
-  And I should see "4 results"
+  And I should see "6 results"
   And I should see the following search results:
-    | Uncle Bulgaria        | 23 signatures |
-    | Common People         | 19 signatures |
-    | Overthrow the Wombles | 17 signatures |
-    | Wombles               | 13 signatures |
+    | Uncle Bulgaria               | 23 signatures |
+    | Common People                | 19 signatures |
+    | Overthrow the Wombles        | 17 signatures |
+    | Wombles                      | 13 signatures |
+    | The Wombles will rock Glasto | 9 signatures  |
+    | Eavis vs the Wombles         |               |
 
 Scenario: Arnold searches for petitions when parliament is dissolved
   Given Parliament is dissolved
@@ -59,16 +61,16 @@ Scenario: Arnold searches for petitions when parliament is dissolved
   And I search all petitions for "Wombles"
   Then I should be on the all petitions page
   And I should have the following query string:
-    | state | closed  |
     | q     | Wombles |
   And I should see my search term "Wombles" filled in the search field
-  And I should see "5 results"
+  And I should see "6 results"
   And I should see the following search results:
     | Uncle Bulgaria               | 23 signatures |
     | Common People                | 19 signatures |
     | Overthrow the Wombles        | 17 signatures |
     | Wombles                      | 13 signatures |
-    | The Wombles will rock Glasto | 1 signature   |
+    | The Wombles will rock Glasto | 9 signatures  |
+    | Eavis vs the Wombles         |               |
 
 Scenario: Arnold searches for petitions when parliament is pending
   Given Parliament is pending
@@ -76,11 +78,11 @@ Scenario: Arnold searches for petitions when parliament is pending
   And I search all petitions for "Rivers"
   Then I should be on the archived petitions page
   And I should have the following query string:
-    | state | published |
     | q     | Rivers    |
   And I should see my search term "Rivers" filled in the search field
-  And I should see "3 results"
+  And I should see "4 results"
   And I should see the following search results:
     | Rivers are great         | 835 signatures |
     | Cry me a river           | 639 signatures |
     | More rivers please       | 243 signatures |
+    | Also Rivers              |                |

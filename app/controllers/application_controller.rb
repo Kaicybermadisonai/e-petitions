@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     request.format.symbol == :json
   end
 
+  def local_request?
+    Rails.application.config.consider_all_requests_local || request.local?
+  end
+
   def unknown_format?
     request.format.nil? && request.path.match(/\.\w+$/)
   end
